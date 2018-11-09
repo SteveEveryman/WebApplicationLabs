@@ -25,20 +25,51 @@ namespace MvcMovie.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Genre");
+                    b.Property<string>("Genre")
+                        .IsRequired()
+                        .HasMaxLength(30);
+
+                    b.Property<string>("PosterURL");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18, 2)");
 
-                    b.Property<string>("Rating");
+                    b.Property<string>("Rating")
+                        .IsRequired();
 
                     b.Property<DateTime>("ReleaseDate");
 
-                    b.Property<string>("Title");
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(60);
 
                     b.HasKey("ID");
 
                     b.ToTable("Movie");
+                });
+
+            modelBuilder.Entity("MvcMovie.Models.Review", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("MovieID");
+
+                    b.Property<string>("MovieTitle")
+                        .IsRequired();
+
+                    b.Property<string>("Reviewer")
+                        .IsRequired()
+                        .HasMaxLength(60);
+
+                    b.Property<string>("UserReview")
+                        .IsRequired()
+                        .HasMaxLength(1500);
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Review");
                 });
 #pragma warning restore 612, 618
         }

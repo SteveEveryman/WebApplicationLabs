@@ -6,6 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MvcMovie.Models;
+using System.Net.Http;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 
 namespace MvcMovie.Controllers
 {
@@ -61,6 +65,14 @@ namespace MvcMovie.Controllers
             {
                 return NotFound();
             }
+            var reviewData = from r in _context.Review select r;
+
+            if (id != null)
+            {
+                reviewData = reviewData.Where(x => x.MovieID == id);
+            }
+
+            ViewData["Reviews"] = await reviewData.ToListAsync();
 
             return View(movie);
         }
@@ -170,6 +182,50 @@ namespace MvcMovie.Controllers
         private bool MovieExists(int id)
         {
             return _context.Movie.Any(e => e.ID == id);
+        }
+ 
+        public async Task<IActionResult> OMDBCreate(string movieName)
+        {
+                HttpClient client = new HttpClient();
+                string url = "http://www.omdbapi.com/?apikey=" + "ee3e7760" + "&t=" + movieName;
+                var response = await client.GetAsync(url);
+                var data = await response.Content.ReadAsStringAsync();
+                var json = JsonConvert.DeserializeObject(data).ToString();
+                dynamic omdbMovie = JObject.Parse(json);
+
+                ViewData["movie"] = json;
+                ViewData["omdbMovie"] = omdbMovie;
+
+                Movie movie = new Movie();
+                try
+                {
+                    movie.Title = omdbMovie["Title"];
+                    movie.ReleaseDate = omdbMovie["Released"];
+                    movie.Genre = omdbMovie["Genre"].ToString().Split(',')[0];
+                    movie.PosterURL = omdbMovie["Poster"];
+                    ViewData["Rating"] = omdbMovie["Rated"];
+                }
+                catch
+                {
+
+                }
+
+                return View(movie);
+            }
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> OMDBCreate([Bind("ID,Title,ReleaseDate,Genre,Price,Rating,PosterURL")] Movie movie)
+        {
+
+            
+            if (ModelState.IsValid)
+            {
+                _context.Add(movie);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(movie);
         }
     }
 }

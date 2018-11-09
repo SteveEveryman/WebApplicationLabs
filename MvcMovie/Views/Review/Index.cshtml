@@ -1,0 +1,39 @@
+﻿@model IEnumerable<MvcMovie.Models.Review>
+
+@{
+    ViewData["Title"] = "Index";
+    var movies = ViewData["Movies"];
+}
+
+<h2>Index</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>       
+             @Html.DisplayNameFor(model => model.Reviewer)
+            </th>
+            <th>
+             Comment
+            </th>
+            <th>
+             Movie Title
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Reviewer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserReview)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MovieTitle)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

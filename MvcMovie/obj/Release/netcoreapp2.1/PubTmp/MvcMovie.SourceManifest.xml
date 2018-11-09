@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <sitemanifest>
-  <IisApp path="C:\Users\Eamon\Desktop\School\AppEngineering\MvcMovie\MvcMovie\obj\Release\netcoreapp2.1\PubTmp\Out\" />
+  <IisApp path="C:\Users\Eamon\Desktop\School\AppEngineering\MvcMovie Part 3\MvcMovie\obj\Release\netcoreapp2.1\PubTmp\Out\" />
+  <dbfullsql path="C:\Users\Eamon\Desktop\School\AppEngineering\MvcMovie Part 3\MvcMovie\obj\Release\netcoreapp2.1\PubTmp\EFSQLScripts\MvcMovie.Models.MvcMovieContext.sql" />
 </sitemanifest>

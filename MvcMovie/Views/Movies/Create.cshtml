@@ -9,6 +9,17 @@
 <h4>Movie</h4>
 <hr />
 <div class="row">
+    <h2>IMDB Lookup</h2>
+    <div class="imdb">
+        <form class="form-inline" method="get" action="/Movies/OMDBCreate">
+            <div class="form-group">
+                <input type="text" name="movieName" class="form-control col-sm-6" placeholder="Title">
+            </div>
+            <input type="submit" value="Lookup on IMDB" class="btn btn-info">
+        </form>
+    </div>
+    <h2>Manual Add</h2>
+
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -40,6 +51,7 @@
                 </select>
                 <span asp-validation-for="Rating" class="text-danger"></span>
             </div>
+            <input type="hidden" asp-for="PosterURL" id="PosterURL" name="PosterURL" />
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>

@@ -36,6 +36,14 @@
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
+            <div class="form-group">
+                <label asp-for="Rating" class="control-label"></label>
+                <!--<input asp-for="Rating" class="form-control" />-->
+                <select asp-for="Rating" class="form-control" asp-items="@(new SelectList(Enum.GetValues(typeof(Ratings))))">
+                    <option disabled selected>Select Rating</option>
+                </select>
+                <span asp-validation-for="Rating" class="text-danger"></span>
+            </div>
         </form>
     </div>
 </div>

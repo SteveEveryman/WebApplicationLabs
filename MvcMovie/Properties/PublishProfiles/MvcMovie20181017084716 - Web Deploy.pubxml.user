@@ -6,6 +6,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAABzkwgjmKl0ajvbfrKpX/5AAAAAACAAAAAAAQZgAAAAEAACAAAAA26Q0HUbzvNunLZvpPzxd7gOj4bi0m2wIS/xB0uLadtwAAAAAOgAAAAAIAACAAAABrpyH2J606y7P3mSX9vZcV84t55o2CP83rl+UqgHC7SYAAAADkVRW6qZ9Vau7JMK0+OO5s+y+J0rHJvoXYuimJQm/l9m48as7vUPL1YKHooZLOuv7/jPMOgMizTG9wWC/vLxOgtsJkd/Cz32HAAeQS3tqv0l9OTlEX+qhpBXhAratPZrR6bHSLApae1Qq1qFJ1N2MO/XSdvrHFFpEFG5SwLsmtv0AAAAB1YmYA3IwaW4aJiRNmh4pVGA8QtU/BevzJtLObqxHU11GZhARvSxDH1NJVE45UHmpKVltcBNeUjAgQ+lFh7VnB</EncryptedPassword>
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAke9jAM1490GjhmMk/ZYynAAAAAACAAAAAAAQZgAAAAEAACAAAAAotD9/UUaoUglO+HszKmha4ziRvxwJXWYasbX1y7pKVwAAAAAOgAAAAAIAACAAAABBStiI0j/mH7h6FWnG2XUshMgonL8ZW56elBeKj2bizYAAAACewXxOfI/mvPJA03gz+vfs6W69IBzsP8rqkPnWphIptXNffAb2z1l+pNafhgF5tQ2AfNvn/pPEayKqlrFPWzyDI0yZlb5R9vMv/IcVr2sJgyZ8PmoVtx6LCfjWI/uU2tFVv9WmDYtjpskxFpQuJOTdf9lxksP2xdtNelI52RCtUUAAAAAeo0WEMogcqcWI0ALE+SCDvDqqowzm+LX4nvej+x0uJNjOqIkgzDca3CyOeDbRmMCKbX/FLp9jlF4jVhyaKxcI</EncryptedPassword>
   </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="MvcMovieContext">
+      <Value>Data Source=tcp:mvcmovie20181017084716dbserver.database.windows.net,1433%3bInitial Catalog=MvcMovie20181017084716_db%3bUser Id=clearye%40mvcmovie20181017084716dbserver%3bPassword=Fatfat22</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="MvcMovie.Models.MvcMovieContext">
+      <Value>Data Source=tcp:mvcmovie20181017084716dbserver.database.windows.net,1433%3bInitial Catalog=MvcMovie20181017084716_db%3bUser Id=clearye%40mvcmovie20181017084716dbserver%3bPassword=Fatfat22</Value>
+    </EFMigrations>
+  </ItemGroup>
 </Project>
